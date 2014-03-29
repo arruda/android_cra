@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">CRA</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="titulo_matricula">Calculo do CRA</string>
+    <string name="label_matricula">Matricula:</string>
+    <string name="hint_matricula">123456789</string>
+    <string name="label_bt_matricula">Entrar</string>
     <string name="action_settings">Settings</string>
 
 </resources>

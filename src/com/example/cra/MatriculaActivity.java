@@ -1,5 +1,11 @@
 package com.example.cra;
 
+import java.util.Iterator;
+import java.util.List;
+
+import com.example.cra.daos.MatriculasDataSource;
+import com.example.cra.models.Matricula;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,14 +18,29 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.util.Log;
 
 public class MatriculaActivity extends ActionBarActivity implements
 		OnClickListener {
+
+	private MatriculasDataSource matriculasDatasource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_matricula);
+
+		matriculasDatasource = new MatriculasDataSource(this);
+		matriculasDatasource.open();
+
+		matriculasDatasource.createMatricula("123");
+		matriculasDatasource.createMatricula("321");
+		matriculasDatasource.createMatricula("000");
+		List<Matricula> values = matriculasDatasource.getAllMatriculas();
+//		for (Matricula matricula : values) {
+//			matriculasDatasource.deleteMatricula(matricula);
+//		}
+		Log.w("LISTA DAS MATRICULAS", values.toString());
 		
 		final Button button = (Button) findViewById(R.id.entrar_matricula);
 		button.setOnClickListener(this);
@@ -66,9 +87,26 @@ public class MatriculaActivity extends ActionBarActivity implements
 	public void onClick(View v) {
 		EditText campoMatricula = (EditText) findViewById(R.id.matricula);
 		String matricula = campoMatricula.getText().toString();
-		Intent intent = new Intent(MatriculaActivity.this, CalculoActivity.class);
-		startActivity(intent);
+
+		Matricula matriculaObj = matriculasDatasource.getOrCreateMatricula(matricula);
+		List<Matricula> values = matriculasDatasource.getAllMatriculas();
+		Log.w("MATRICULA SELECIONADA", matriculaObj.toString());
+//		Intent intent = new Intent(MatriculaActivity.this,
+//				CalculoActivity.class);
+//		startActivity(intent);
 
 	}
+
+	  @Override
+	  protected void onResume() {
+		  matriculasDatasource.open();
+	    super.onResume();
+	  }
+
+	  @Override
+	  protected void onPause() {
+		  matriculasDatasource.close();
+	    super.onPause();
+	  }
 
 }

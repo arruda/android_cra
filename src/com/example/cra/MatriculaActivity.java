@@ -32,15 +32,15 @@ public class MatriculaActivity extends ActionBarActivity implements
 
 		matriculasDatasource = new MatriculasDataSource(this);
 		matriculasDatasource.open();
-
-		matriculasDatasource.createMatricula("123");
-		matriculasDatasource.createMatricula("321");
-		matriculasDatasource.createMatricula("000");
-		List<Matricula> values = matriculasDatasource.getAllMatriculas();
+//
+//		matriculasDatasource.createMatricula("123");
+//		matriculasDatasource.createMatricula("321");
+//		matriculasDatasource.createMatricula("000");
+//		List<Matricula> values = matriculasDatasource.getAllMatriculas();
 //		for (Matricula matricula : values) {
 //			matriculasDatasource.deleteMatricula(matricula);
 //		}
-		Log.w("LISTA DAS MATRICULAS", values.toString());
+//		Log.w("LISTA DAS MATRICULAS", values.toString());
 		
 		final Button button = (Button) findViewById(R.id.entrar_matricula);
 		button.setOnClickListener(this);

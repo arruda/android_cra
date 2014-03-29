@@ -22,6 +22,7 @@ public class MateriasDataSource {
 				SQLiteDatabaseHelper.COLUMN_ID,
 				SQLiteDatabaseHelper.COLUMN_NOME,  
 				SQLiteDatabaseHelper.COLUMN_CREDITOS,  
+				SQLiteDatabaseHelper.COLUMN_PERIODO,  
 			};
 
 	public MateriasDataSource(Context context) {
@@ -38,11 +39,12 @@ public class MateriasDataSource {
 		Log.i(this.getClass().getName() + "close", "DATABASE CLOSE");
 	}
 
-	public Materia createMateria(String nome, Integer creditos) {
+	public Materia createMateria(String nome, Integer creditos, Integer periodo) {
 
 		ContentValues values = new ContentValues();
 		values.put(SQLiteDatabaseHelper.COLUMN_NOME, nome);
 		values.put(SQLiteDatabaseHelper.COLUMN_CREDITOS, creditos);
+		values.put(SQLiteDatabaseHelper.COLUMN_PERIODO, periodo);
 		
 		long insertId = database.insert(SQLiteDatabaseHelper.TABLE_MATERIA, null,
 				values);
@@ -58,14 +60,18 @@ public class MateriasDataSource {
 	}
 
 	public Materia persistMateria(Materia materia) {
-		Materia newMateria = createMateria(materia.getNome(),materia.getCredito());
+		Materia newMateria = createMateria(
+								materia.getNome(),
+								materia.getCreditos(),
+								materia.getPeriodo()
+							);
 		return newMateria;
 	}
 
 	public void deleteMateria(Materia materia) {
 		long id = materia.getId();
 		Log.i(this.getClass().getName() + "delete", "DELETE");
-		database.delete(SQLiteDatabaseHelper.TABLE_MATRICULA, SQLiteDatabaseHelper.COLUMN_ID
+		database.delete(SQLiteDatabaseHelper.TABLE_MATERIA, SQLiteDatabaseHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
 	
@@ -113,7 +119,8 @@ public class MateriasDataSource {
 		Materia materia = new Materia();
 		materia.setId(cursor.getLong(0));
 		materia.setNome(cursor.getString(1));
-		materia.setCredito(cursor.getInt(2));
+		materia.setCreditos(cursor.getInt(2));
+		materia.setPeriodo(cursor.getInt(3));
 		return materia;
 	}
 
@@ -137,7 +144,7 @@ public class MateriasDataSource {
 	private List<Materia> getDefaultMaterias(){
 		List<Materia> materias = new ArrayList<Materia>();
 		
-		Materia fsi = new Materia("FSI", 4);
+		Materia fsi = new Materia("FSI", 4, 1);
 		materias.add(fsi);
 		
 		return materias;

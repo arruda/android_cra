@@ -1,18 +1,18 @@
 package com.example.cra.models;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Materia {
 
 	private long id;
 	private String nome;
-	private Integer credito;
+	private Integer creditos;
+	private Integer periodo;
 	
-	public Materia(String nome, Integer credito) {
+	public Materia(String nome, Integer creditos, Integer periodo) {
 		super();
 		this.nome = nome;
-		this.credito = credito;
+		this.creditos = creditos;
+		this.periodo = periodo;
 	}
 
 
@@ -21,12 +21,22 @@ public class Materia {
 	}
 
 
-	public Integer getCredito() {
-		return credito;
+	public Integer getPeriodo() {
+		return periodo;
 	}
 
-	public void setCredito(Integer credito) {
-		this.credito = credito;
+
+	public void setPeriodo(Integer periodo) {
+		this.periodo = periodo;
+	}
+
+
+	public Integer getCreditos() {
+		return creditos;
+	}
+
+	public void setCreditos(Integer creditos) {
+		this.creditos = creditos;
 	}
 
 
@@ -49,7 +59,7 @@ public class Materia {
 
 	@Override
 	public String toString() {
-		return nome;
+		return nome + " - " + creditos + " - " + periodo;
 	}
 
 }

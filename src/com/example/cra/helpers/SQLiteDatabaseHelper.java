@@ -8,7 +8,7 @@ import android.util.Log;
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "cra.db";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 	
 	//usado por todas as tabelas!
 	public static final String COLUMN_ID = "_id";
@@ -19,6 +19,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 	public static final String TABLE_MATERIA = "materia";
 	public static final String COLUMN_NOME = "nome";
 	public static final String COLUMN_CREDITOS = "creditos";
+	public static final String COLUMN_PERIODO = "periodo";
 
 	private static final String CREATE_TABLE_MATRICULA = "create table "
 			+ TABLE_MATRICULA + "(" + COLUMN_ID
@@ -32,6 +33,8 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 			+ COLUMN_NOME
 				+ " text not null,"
 			+ COLUMN_CREDITOS
+				+ " integer not null," 
+			+ COLUMN_PERIODO
 				+ " integer not null" 
 			+ ");";
 	

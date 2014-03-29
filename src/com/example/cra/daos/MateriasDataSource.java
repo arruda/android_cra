@@ -57,6 +57,11 @@ public class MateriasDataSource {
 		return newMateria;
 	}
 
+	public Materia persistMateria(Materia materia) {
+		Materia newMateria = createMateria(materia.getNome(),materia.getCredito());
+		return newMateria;
+	}
+
 	public void deleteMateria(Materia materia) {
 		long id = materia.getId();
 		Log.i(this.getClass().getName() + "delete", "DELETE");
@@ -78,31 +83,29 @@ public class MateriasDataSource {
 		cursor.close();
 		return obj;
 	}
-//	
-//	public Materia getOrCreateMateria(String nome){
-//
-//		Materia obj = this.getMateria(nome);
-//		if(obj == null){
-//			obj = this.createMateria(nome);
-//		}
-//		return obj;
-//	}
 
 	public List<Materia> getAllMaterias() {
 		List<Materia> materias = new ArrayList<Materia>();
-
 		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_MATERIA,
 				allColumns, null, null, null, null, null);
 
 		Log.i(this.getClass().getName() + "getAll", "GET_ALL");
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Materia materia = cursorToMateria(cursor);
-			materias.add(materia);
-			cursor.moveToNext();
+		
+		//nao existe nenhuma materia, então deve popular com as padroes
+		if(cursor.getCount() < 1){
+			materias = addDefaultMaterias();
+		}
+		else{
+			cursor.moveToFirst();
+			while (!cursor.isAfterLast()) {
+				Materia materia = cursorToMateria(cursor);
+				materias.add(materia);
+				cursor.moveToNext();
+			}
 		}
 		// make sure to close the cursor
 		cursor.close();
+		Log.i(this.getClass().getName() + "getAll: ", materias.toString());
 		return materias;
 	}
 
@@ -114,13 +117,24 @@ public class MateriasDataSource {
 		return materia;
 	}
 
+	
+	private List<Materia> addDefaultMaterias(){
+		Log.i(this.getClass().getName() + "addDefault: ", "DEFAULT");
+		List<Materia> materias = getDefaultMaterias();
+		List<Materia> materiasPersisted = new ArrayList<Materia>();
+		for (Materia materia : materias) {
+			materiasPersisted.add(persistMateria(materia));
+		}
+		return materiasPersisted;
+	}
+	
 	/**
 	 * Seria legal aqui usar a lib GSON e abrir um json que tem a lista de cada materia
 	 * dai é só mandar ler o arquivo e na hora de parsear o gson dizer que é da classe: Materia[].class
 	 * que ele vai popular cada objeto sozinho.
 	 * 
 	 */
-	public List<Materia> getDefaultMaterias(){
+	private List<Materia> getDefaultMaterias(){
 		List<Materia> materias = new ArrayList<Materia>();
 		
 		Materia fsi = new Materia("FSI", 4);

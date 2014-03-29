@@ -3,6 +3,7 @@ package com.example.cra;
 import java.util.Iterator;
 import java.util.List;
 
+import com.example.cra.daos.MateriasDataSource;
 import com.example.cra.daos.MatriculasDataSource;
 import com.example.cra.models.Matricula;
 
@@ -24,6 +25,7 @@ public class MatriculaActivity extends ActionBarActivity implements
 		OnClickListener {
 
 	private MatriculasDataSource matriculasDatasource;
+	private MateriasDataSource materiasDatasource;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,9 @@ public class MatriculaActivity extends ActionBarActivity implements
 
 		matriculasDatasource = new MatriculasDataSource(this);
 		matriculasDatasource.open();
+		
+		materiasDatasource = new MateriasDataSource(this);
+		materiasDatasource.open();
 //
 //		matriculasDatasource.createMatricula("123");
 //		matriculasDatasource.createMatricula("321");
@@ -90,6 +95,7 @@ public class MatriculaActivity extends ActionBarActivity implements
 
 		Matricula matriculaObj = matriculasDatasource.getOrCreateMatricula(matricula);
 		List<Matricula> values = matriculasDatasource.getAllMatriculas();
+		materiasDatasource.getAllMaterias();
 		Log.w("MATRICULA SELECIONADA", matriculaObj.toString());
 //		Intent intent = new Intent(MatriculaActivity.this,
 //				CalculoActivity.class);

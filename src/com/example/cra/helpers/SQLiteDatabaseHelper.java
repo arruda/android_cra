@@ -8,7 +8,7 @@ import android.util.Log;
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "cra.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	
 	//usado por todas as tabelas!
 	public static final String COLUMN_ID = "_id";
@@ -17,6 +17,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_MATRICULA = "matricula";
 	
 	public static final String TABLE_MATERIA = "materia";
+	public static final String COLUMN_NOME = "nome";
 	public static final String COLUMN_CREDITOS = "creditos";
 
 	private static final String CREATE_TABLE_MATRICULA = "create table "
@@ -25,9 +26,14 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 			+ " text not null);";
 
 	private static final String CREATE_TABLE_MATERIA = "create table "
-			+ TABLE_MATERIA + "(" + COLUMN_ID
-			+ " integer primary key autoincrement, " + COLUMN_CREDITOS
-			+ " integer not null);";
+			+ TABLE_MATERIA + "(" 
+			+ COLUMN_ID	
+				+ " integer primary key autoincrement, " 
+			+ COLUMN_NOME
+				+ " text not null,"
+			+ COLUMN_CREDITOS
+				+ " integer not null" 
+			+ ");";
 	
 
 	public SQLiteDatabaseHelper(Context context) {
@@ -36,17 +42,19 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase database) {
+		Log.i(this.getClass().getName() + "onCreate", "CREAT DATABASE");
 	    database.execSQL(CREATE_TABLE_MATRICULA);
 	    database.execSQL(CREATE_TABLE_MATERIA);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		Log.i(this.getClass().getName() + "onUpgrade", "UPGRADE DATABASE");
 	    Log.w(SQLiteDatabaseHelper.class.getName(),
 	            "Upgrading database from version " + oldVersion + " to "
 	                + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATERIA);
 	        onCreate(db);
 	      }
 

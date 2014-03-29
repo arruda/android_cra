@@ -7,6 +7,14 @@ Caso contrario salva uma nova entrada para essa matricula.
 O programa deve ter uma tela para fazer o calculo do CR, bem como deve ter uma tela para que o aluno preencha as materias de cada periodo e coloque quanto tirou em cada uma destas.
 
 
+REFERENCIAS
+-----------
+
+http://www.vogella.com/tutorials/AndroidSQLite/article.html
+
+http://www.androidhive.info/2013/09/android-sqlite-database-with-multiple-tables/
+
+
 LICENÇA
 =======
 

@@ -20,6 +20,13 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_NOME = "nome";
 	public static final String COLUMN_CREDITOS = "creditos";
 	public static final String COLUMN_PERIODO = "periodo";
+	
+
+	//representa o M2M de materia x matricula (contendo a nota dessa relação)
+	public static final String TABLE_MATRICULA_MATERIA = "matricula_materia";
+	public static final String COLUMN_MATRICULA_ID = "_matricula_id";
+	public static final String COLUMN_MATERIA_ID = "_materia_id";
+	public static final String COLUMN_NOTA = "nota";
 
 	private static final String CREATE_TABLE_MATRICULA = "create table "
 			+ TABLE_MATRICULA + "(" + COLUMN_ID
@@ -37,6 +44,18 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 			+ COLUMN_PERIODO
 				+ " integer not null" 
 			+ ");";
+
+	private static final String CREATE_TABLE_MATRICULA_MATERIA = "create table "
+			+ TABLE_MATRICULA_MATERIA + "(" 
+			+ COLUMN_ID	
+				+ " integer primary key autoincrement, " 
+			+ COLUMN_MATRICULA_ID
+				+ " integer not null,"
+			+ COLUMN_MATERIA_ID
+				+ " integer not null," 
+			+ COLUMN_NOTA
+				+ " real not null" 
+			+ ");";
 	
 
 	public SQLiteDatabaseHelper(Context context) {
@@ -48,6 +67,8 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 		Log.i(this.getClass().getName() + "onCreate", "CREAT DATABASE");
 	    database.execSQL(CREATE_TABLE_MATRICULA);
 	    database.execSQL(CREATE_TABLE_MATERIA);
+	    database.execSQL(CREATE_TABLE_MATRICULA_MATERIA);
+	    
 	}
 
 	@Override
@@ -58,6 +79,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 	                + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATERIA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA_MATERIA);
 	        onCreate(db);
 	      }
 

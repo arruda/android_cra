@@ -3,7 +3,7 @@ package com.example.cra.daos;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.cra.SQLiteHelper;
+import com.example.cra.MatriculaDatabaseHelper;
 import com.example.cra.models.Matricula;
 
 import android.content.ContentValues;
@@ -18,12 +18,12 @@ public class MatriculasDataSource {
 
 	// Database fields
 	private SQLiteDatabase database;
-	private SQLiteHelper dbHelper;
-	private String[] allColumns = { SQLiteHelper.COLUMN_ID,
-			SQLiteHelper.COLUMN_MATRICULA };
+	private MatriculaDatabaseHelper dbHelper;
+	private String[] allColumns = { MatriculaDatabaseHelper.COLUMN_ID,
+			MatriculaDatabaseHelper.COLUMN_MATRICULA };
 
 	public MatriculasDataSource(Context context) {
-		dbHelper = new SQLiteHelper(context);
+		dbHelper = new MatriculaDatabaseHelper(context);
 	}
 
 	public void open() throws SQLException {
@@ -36,11 +36,11 @@ public class MatriculasDataSource {
 
 	public Matricula createMatricula(String matricula) {
 		ContentValues values = new ContentValues();
-		values.put(SQLiteHelper.COLUMN_MATRICULA, matricula);
-		long insertId = database.insert(SQLiteHelper.TABLE_MATRICULA, null,
+		values.put(MatriculaDatabaseHelper.COLUMN_MATRICULA, matricula);
+		long insertId = database.insert(MatriculaDatabaseHelper.TABLE_MATRICULA, null,
 				values);
-		Cursor cursor = database.query(SQLiteHelper.TABLE_MATRICULA,
-				allColumns, SQLiteHelper.COLUMN_ID + " = " + insertId, null,
+		Cursor cursor = database.query(MatriculaDatabaseHelper.TABLE_MATRICULA,
+				allColumns, MatriculaDatabaseHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
 		Matricula newMatricula = cursorToMatricula(cursor);
@@ -51,15 +51,15 @@ public class MatriculasDataSource {
 	public void deleteMatricula(Matricula matricula) {
 		long id = matricula.getId();
 		System.out.println("Matricula deleted with id: " + id);
-		database.delete(SQLiteHelper.TABLE_MATRICULA, SQLiteHelper.COLUMN_ID
+		database.delete(MatriculaDatabaseHelper.TABLE_MATRICULA, MatriculaDatabaseHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
 	
 	public Matricula getMatricula(String matricula) {
 		
 		Matricula matriculaObj = null;
-		Cursor cursor = database.query(SQLiteHelper.TABLE_MATRICULA,
-				allColumns, SQLiteHelper.COLUMN_MATRICULA + " = '" + matricula +"'", null,
+		Cursor cursor = database.query(MatriculaDatabaseHelper.TABLE_MATRICULA,
+				allColumns, MatriculaDatabaseHelper.COLUMN_MATRICULA + " = '" + matricula +"'", null,
 				null, null, null);
 		if(cursor.getCount() != 0){
 			cursor.moveToFirst();
@@ -81,7 +81,7 @@ public class MatriculasDataSource {
 	public List<Matricula> getAllMatriculas() {
 		List<Matricula> matriculas = new ArrayList<Matricula>();
 
-		Cursor cursor = database.query(SQLiteHelper.TABLE_MATRICULA,
+		Cursor cursor = database.query(MatriculaDatabaseHelper.TABLE_MATRICULA,
 				allColumns, null, null, null, null, null);
 
 		cursor.moveToFirst();

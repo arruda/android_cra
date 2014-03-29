@@ -7,5 +7,7 @@
     <string name="hint_matricula">123456789</string>
     <string name="label_bt_matricula">Entrar</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_calculo">CalculoActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

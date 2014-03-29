@@ -1,35 +1,34 @@
 package com.example.cra;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
+import android.os.Build;
 
-public class MatriculaActivity extends ActionBarActivity implements
-		OnClickListener {
+public class CalculoActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_matricula);
-		
-		final Button button = (Button) findViewById(R.id.entrar_matricula);
-		button.setOnClickListener(this);
+		setContentView(R.layout.activity_calculo);
+
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.matricula, menu);
+		getMenuInflater().inflate(R.menu.calculo, menu);
 		return true;
 	}
 
@@ -56,19 +55,10 @@ public class MatriculaActivity extends ActionBarActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_matricula,
+			View rootView = inflater.inflate(R.layout.fragment_calculo,
 					container, false);
 			return rootView;
 		}
-	}
-
-	@Override
-	public void onClick(View v) {
-		EditText campoMatricula = (EditText) findViewById(R.id.matricula);
-		String matricula = campoMatricula.getText().toString();
-		Intent intent = new Intent(MatriculaActivity.this, CalculoActivity.class);
-		startActivity(intent);
-
 	}
 
 }

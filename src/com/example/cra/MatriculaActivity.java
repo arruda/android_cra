@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.cra.daos.MateriasDataSource;
 import com.example.cra.daos.MatriculasDataSource;
 import com.example.cra.models.Matricula;
+import com.example.cra.util.JsonConfigLoader;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +38,11 @@ public class MatriculaActivity extends ActionBarActivity implements
 		
 		materiasDatasource = new MateriasDataSource(this);
 		materiasDatasource.open();
+		
+		//add as materias padrões, nesse caso se ja houver todas
+		//as materias, então ele não faz nada nesse ponto
+		String materiasJson = JsonConfigLoader.loadJSONFromAsset(this);
+		materiasDatasource.addDefaultMaterias(materiasJson);
 //
 //		matriculasDatasource.createMatricula("123");
 //		matriculasDatasource.createMatricula("321");

@@ -1,6 +1,7 @@
 package com.example.cra.daos;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.example.cra.helpers.SQLiteDatabaseHelper;
@@ -12,6 +13,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.google.gson.Gson;
 
 public class MateriasDataSource {
 
@@ -97,17 +100,11 @@ public class MateriasDataSource {
 
 		Log.i(this.getClass().getName() + "getAll", "GET_ALL");
 		
-		//nao existe nenhuma materia, então deve popular com as padroes
-		if(cursor.getCount() < 1){
-			materias = addDefaultMaterias();
-		}
-		else{
-			cursor.moveToFirst();
-			while (!cursor.isAfterLast()) {
-				Materia materia = cursorToMateria(cursor);
-				materias.add(materia);
-				cursor.moveToNext();
-			}
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Materia materia = cursorToMateria(cursor);
+			materias.add(materia);
+			cursor.moveToNext();
 		}
 		// make sure to close the cursor
 		cursor.close();
@@ -125,11 +122,17 @@ public class MateriasDataSource {
 	}
 
 	
-	private List<Materia> addDefaultMaterias(){
+	public List<Materia> addDefaultMaterias(String materiasJson){
+		List<Materia> materias = getAllMaterias();
+		if(materias.size() != 0){
+			return materias;
+		}
+
 		Log.i(this.getClass().getName() + "addDefault: ", "DEFAULT");
-		List<Materia> materias = getDefaultMaterias();
+		List<Materia> materiasDefault = getDefaultMaterias(materiasJson);
+
 		List<Materia> materiasPersisted = new ArrayList<Materia>();
-		for (Materia materia : materias) {
+		for (Materia materia : materiasDefault) {
 			materiasPersisted.add(persistMateria(materia));
 		}
 		return materiasPersisted;
@@ -141,11 +144,14 @@ public class MateriasDataSource {
 	 * que ele vai popular cada objeto sozinho.
 	 * 
 	 */
-	private List<Materia> getDefaultMaterias(){
-		List<Materia> materias = new ArrayList<Materia>();
+	private List<Materia> getDefaultMaterias(String json){
+		Gson gson = new Gson();
+		Materia[] materiasVet = gson.fromJson(json, Materia[].class);   
+
+		List<Materia> materias = new ArrayList<Materia>(Arrays.asList(materiasVet));
 		
-		Materia fsi = new Materia("FSI", 4, 1);
-		materias.add(fsi);
+//		Materia fsi = new Materia("FSI", 4, 1);
+//		materias.add(fsi);
 		
 		return materias;
 	}

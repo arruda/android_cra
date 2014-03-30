@@ -8,7 +8,7 @@ import android.util.Log;
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "cra.db";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 1;
 	
 	//usado por todas as tabelas!
 	public static final String COLUMN_ID = "_id";
@@ -68,7 +68,6 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
 	    database.execSQL(CREATE_TABLE_MATRICULA);
 	    database.execSQL(CREATE_TABLE_MATERIA);
 	    database.execSQL(CREATE_TABLE_MATRICULA_MATERIA);
-	    
 	}
 
 	@Override
@@ -82,5 +81,19 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA_MATERIA);
 	        onCreate(db);
 	      }
+
+	@Override
+	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		Log.i(this.getClass().getName() + "onDowngrade", "DOWNGRADE DATABASE");
+	    Log.w(SQLiteDatabaseHelper.class.getName(),
+	            "Downgrading database from version " + oldVersion + " to "
+	                + newVersion + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATERIA);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATRICULA_MATERIA);
+	        onCreate(db);
+		
+	}
+	
 
 }

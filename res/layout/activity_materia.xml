@@ -20,7 +20,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/productid_text"
+                android:text="@string/materiaid_text"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -33,6 +33,7 @@
 
       
 
+    <!--  
         <TableRow
             android:id="@+id/tableRowADMFIN"
             android:layout_width="wrap_content"
@@ -767,6 +768,7 @@
                 android:ems="10"
                 android:inputType="number" />
         </TableRow>
+    -->
     </TableLayout>
 
     <LinearLayout

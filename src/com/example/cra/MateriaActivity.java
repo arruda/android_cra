@@ -1,4 +1,4 @@
-package com.example.teste;
+package com.example.cra;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +26,7 @@ public class MateriaActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.materia_activitywe, menu);
+		getMenuInflater().inflate(R.menu.materia, menu);
 		return true;
 	}
 
@@ -54,7 +54,7 @@ public class MateriaActivity extends ActionBarActivity {
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(
-					R.layout.fragment_materia_activitywe, container, false);
+					R.layout.fragment_materia, container, false);
 			return rootView;
 		}
 	}

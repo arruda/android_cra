@@ -40,6 +40,25 @@ public class MatriculaMateriasDataSource {
 		Log.i(this.getClass().getName() + "close", "DATABASE CLOSE");
 	}
 
+
+	public void updateMatriculaMateria(Long matricula_id, Long materia_id, Double nota) {
+
+		ContentValues values = new ContentValues();
+		values.put(SQLiteDatabaseHelper.COLUMN_MATRICULA_ID, matricula_id);
+		values.put(SQLiteDatabaseHelper.COLUMN_MATERIA_ID, materia_id);
+		values.put(SQLiteDatabaseHelper.COLUMN_NOTA, nota);
+		
+		database.update(SQLiteDatabaseHelper.TABLE_MATRICULA_MATERIA, 
+										values,
+										SQLiteDatabaseHelper.COLUMN_MATRICULA_ID + " = " + matricula_id 
+										+" and "
+										+ SQLiteDatabaseHelper.COLUMN_MATERIA_ID + " = " + materia_id, 
+										null);
+		
+		Log.i(this.getClass().getName() + "update", "UPDATE");
+		return;
+	}
+	
 	public MatriculaMateria createMatriculaMateria(Long matricula_id, Long materia_id, Double nota) {
 
 		ContentValues values = new ContentValues();
@@ -94,7 +113,7 @@ public class MatriculaMateriasDataSource {
 		cursor.close();
 		return obj;
 	}
-
+	
 	public MatriculaMateria getMatriculaMateriaOrCreate(Long matricula_id, Long materia_id) {
 		MatriculaMateria matMat = getMatriculaMateria(matricula_id, materia_id);
 
@@ -110,6 +129,25 @@ public class MatriculaMateriasDataSource {
 				allColumns, null, null, null, null, null);
 
 		Log.i(this.getClass().getName() + "getAll", "GET_ALL");
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			MatriculaMateria matMat = cursorToMatriculaMateria(cursor);
+			matmats.add(matMat);
+			cursor.moveToNext();
+		}
+		// make sure to close the cursor
+		cursor.close();
+		return matmats;
+	}
+
+	public List<MatriculaMateria> getAllMatriculaMateriasPorMatricula(Long matricula_id) {
+		List<MatriculaMateria> matmats = new ArrayList<MatriculaMateria>();
+		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_MATRICULA_MATERIA,
+				allColumns, SQLiteDatabaseHelper.COLUMN_MATRICULA_ID + " = " + matricula_id ,
+				null, null, null, null);
+
+		Log.i(this.getClass().getName() + "getAll", "GET_ALL_BY_MATRICULA");
 		
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {

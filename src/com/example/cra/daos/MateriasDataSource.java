@@ -77,12 +77,27 @@ public class MateriasDataSource {
 		database.delete(SQLiteDatabaseHelper.TABLE_MATERIA, SQLiteDatabaseHelper.COLUMN_ID
 				+ " = " + id, null);
 	}
-	
+
 	public Materia getMateria(String nome) {
 		
 		Materia obj = null;
 		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_MATERIA,
 				allColumns, SQLiteDatabaseHelper.COLUMN_NOME + " = '" + nome +"'", null,
+				null, null, null);
+		Log.i(this.getClass().getName() + "get", "GET");
+		if(cursor.getCount() != 0){
+			cursor.moveToFirst();
+			obj = cursorToMateria(cursor);
+		}
+		cursor.close();
+		return obj;
+	}
+	
+	public Materia getMateria(Long id) {
+		
+		Materia obj = null;
+		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_MATERIA,
+				allColumns, SQLiteDatabaseHelper.COLUMN_ID + " = " + id, null,
 				null, null, null);
 		Log.i(this.getClass().getName() + "get", "GET");
 		if(cursor.getCount() != 0){

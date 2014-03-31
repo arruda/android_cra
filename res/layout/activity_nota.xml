@@ -29,4 +29,13 @@
         <requestFocus />
     </EditText>
 
+    <Button
+        android:id="@+id/nota_salvar_nota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nota_nota"
+        android:layout_below="@+id/nota_materia"
+        android:layout_marginTop="46dp"
+        android:text="@string/salvar_nota" />
+
 </RelativeLayout>

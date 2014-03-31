@@ -19,5 +19,8 @@
     <string name="cra_label">CRA:</string>
     <string name="add_materia">Add Materia</string>
     <string name="title_activity_nota">Informar Nota</string>
-
+    <string name="salvar_nota">Salvar Nota</string>
+    <string name="add_materia_info">Clique na materia para dar nota.</string>
+    <string name="recalcular">Recalcular</string>
+    
 </resources>

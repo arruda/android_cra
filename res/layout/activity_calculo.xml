@@ -99,6 +99,13 @@
         android:layout_toRightOf="@+id/calculo_carga_cumprida"
         android:text="@string/add_materia" />
 
-        />
+    <Button
+        android:id="@+id/calculo_recalcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/calculo_add_materia"
+        android:layout_alignRight="@+id/calculo_carga_curso_label"
+        android:text="@string/recalcular" />
+
 
 </RelativeLayout>

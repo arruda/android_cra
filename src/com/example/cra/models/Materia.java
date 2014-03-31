@@ -1,8 +1,14 @@
 package com.example.cra.models;
 
+import java.io.Serializable;
 
-public class Materia {
 
+public class Materia implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8444280877045575079L;
 	private long id;
 	private String nome;
 	private Integer creditos;
@@ -59,7 +65,7 @@ public class Materia {
 
 	@Override
 	public String toString() {
-		return nome + " - " + creditos + " - " + periodo;
+		return nome + " - " + creditos + "CR - " + periodo+ "º";
 	}
 
 }

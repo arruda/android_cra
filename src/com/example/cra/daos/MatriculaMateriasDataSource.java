@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.cra.helpers.SQLiteDatabaseHelper;
+import com.example.cra.models.Matricula;
 import com.example.cra.models.MatriculaMateria;
 
 import android.content.ContentValues;
@@ -94,6 +95,15 @@ public class MatriculaMateriasDataSource {
 		return obj;
 	}
 
+	public MatriculaMateria getMatriculaMateriaOrCreate(Long matricula_id, Long materia_id) {
+		MatriculaMateria matMat = getMatriculaMateria(matricula_id, materia_id);
+
+		if(matMat == null){
+			matMat = this.createMatriculaMateria(matricula_id, materia_id, 0.0);
+		}
+		return matMat;
+	}
+
 	public List<MatriculaMateria> getAllMatriculaMaterias() {
 		List<MatriculaMateria> matmats = new ArrayList<MatriculaMateria>();
 		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_MATRICULA_MATERIA,
@@ -117,7 +127,7 @@ public class MatriculaMateriasDataSource {
 		matMat.setId(cursor.getLong(0));
 		
 		matMat.setMatricula_id(cursor.getLong(1));
-		matMat.setMeteria_id(cursor.getInt(2));
+		matMat.setMateria_id(cursor.getInt(2));
 		matMat.setNota(cursor.getDouble(3));
 		return matMat;
 	}

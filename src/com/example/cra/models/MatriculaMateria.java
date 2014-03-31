@@ -5,7 +5,7 @@ public class MatriculaMateria {
 
 	private long id;
 	private long matricula_id;
-	private long meteria_id;
+	private long materia_id;
 	private double nota;
 //	
 //	public MatriculaMateria(String nome, Integer creditos, Integer periodo) {
@@ -34,14 +34,14 @@ public class MatriculaMateria {
 
 
 
-	public long getMeteria_id() {
-		return meteria_id;
+	public long getMateria_id() {
+		return materia_id;
 	}
 
 
 
-	public void setMeteria_id(long meteria_id) {
-		this.meteria_id = meteria_id;
+	public void setMateria_id(long materia_id) {
+		this.materia_id = materia_id;
 	}
 
 
@@ -69,7 +69,7 @@ public class MatriculaMateria {
 
 	@Override
 	public String toString() {
-		return ""+id;
+		return "" + matricula_id + " - " + materia_id+" - " + nota;
 	}
 
 }

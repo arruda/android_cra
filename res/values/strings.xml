@@ -17,9 +17,7 @@
     <string name="carga_curso">3240</string>
     <string name="carga_cumprida_label">Carga Cumprida:</string>
     <string name="cra_label">CRA:</string>
-    
     <string name="add_materia">Add Materia</string>
-    
-    
+    <string name="title_activity_nota">Informar Nota</string>
 
 </resources>

@@ -5,13 +5,168 @@
 		"periodo": 1		
 	},
 	{
+		"nome": "TP1",
+		"creditos": 5,
+		"periodo": 1		
+	},
+	{
+		"nome": "DSW",
+		"creditos": 4,
+		"periodo": 1		
+	},
+	{
+		"nome": "OC",
+		"creditos": 4,
+		"periodo": 1		
+	},
+	{
+		"nome": "MAT",
+		"creditos": 2,
+		"periodo": 1		
+	},
+	{
 		"nome": "TP2",
+		"creditos": 5,
+		"periodo": 2		
+	},
+	{
+		"nome": "AEA",
 		"creditos": 4,
 		"periodo": 2		
 	},
 	{
-		"nome": "TP1",
+		"nome": "ALGEBRA",
 		"creditos": 4,
-		"periodo": 1		
-	}
+		"periodo": 2		
+	},
+	{
+		"nome": "LOGICA",
+		"creditos": 4,
+		"periodo": 2		
+	},
+	{
+		"nome": "CALC1",
+		"creditos": 4,
+		"periodo": 2		
+	},
+	{
+		"nome": "EdD1",
+		"creditos": 4,
+		"periodo": 3		
+	},
+	{
+		"nome": "BS1",
+		"creditos": 4,
+		"periodo": 3		
+	},
+	{
+		"nome": "SO",
+		"creditos": 4,
+		"periodo": 3		
+	},
+	{
+		"nome": "ED",
+		"creditos": 4,
+		"periodo": 3		
+	},
+	{
+		"nome": "CALC2",
+		"creditos": 4,
+		"periodo": 3		
+	},
+	{
+		"nome": "PROB",
+		"creditos": 4,
+		"periodo": 3		
+	},
+	{
+		"nome": "EdD2",
+		"creditos": 4,
+		"periodo": 4		
+	},
+	{
+		"nome": "IHC",
+		"creditos": 4,
+		"periodo": 4		
+	},
+	{
+		"nome": "AS",
+		"creditos": 4,
+		"periodo": 4		
+	},
+	{
+		"nome": "REDES1",
+		"creditos": 4,
+		"periodo": 4		
+	},
+	{
+		"nome": "LFA",
+		"creditos": 4,
+		"periodo": 4		
+	},
+	{
+		"nome": "ESTATISTICA",
+		"creditos": 4,
+		"periodo": 4		
+	},
+	{
+		"nome": "AA",
+		"creditos": 4,
+		"periodo": 5		
+	},
+	{
+		"nome": "EMPREEND",
+		"creditos": 4,
+		"periodo": 5		
+	},
+	{
+		"nome": "BD2",
+		"creditos": 4,
+		"periodo": 5		
+	},
+	{
+		"nome": "REDES2",
+		"creditos": 4,
+		"periodo": 5		
+	},
+	{
+		"nome": "PCS",
+		"creditos": 4,
+		"periodo": 5		
+	},
+	{
+		"nome": "AF",
+		"creditos": 4,
+		"periodo": 6		
+	},
+	{
+		"nome": "PCSSGBD",
+		"creditos": 4,
+		"periodo": 6		
+	},
+	{
+		"nome": "PM",
+		"creditos": 4,
+		"periodo": 6		
+	},
+	{
+		"nome": "PG1",
+		"creditos": 3,
+		"periodo": 7		
+	},
+	{
+		"nome": "PSW",
+		"creditos": 4,
+		"periodo": 7		
+	},
+	{
+		"nome": "PG2",
+		"creditos": 4,
+		"periodo": 8		
+	},
+	{
+		"nome": "GPInfo",
+		"creditos": 4,
+		"periodo": 8		
+	},
 ]

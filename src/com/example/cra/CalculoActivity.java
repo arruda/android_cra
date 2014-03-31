@@ -53,7 +53,7 @@ public class CalculoActivity extends ActionBarActivity {
 		carga_cumprida_txt = (TextView) findViewById(R.id.calculo_carga_cumprida);
 		cra_txt = (TextView) findViewById(R.id.calculo_cra);
 		add_materia = (Button) findViewById(R.id.calculo_add_materia);
-		recalcular_bt = (Button) findViewById(R.id.calculo_recalcular);
+		recalcular_bt = (Button) findViewById(R.id.calculo_recalcularbt);
 		
 		Log.w("matricula", matriculaObj.toString());
 		matricula_txt.setText(matriculaObj.getMatricula());
@@ -113,10 +113,15 @@ public class CalculoActivity extends ActionBarActivity {
 		//mas ai é so questão de arrumar a funcao de calculo de cra
 		Double carga_cumprida = 0.0;
 		Double cra = 0.0;
-		for (MatriculaMateria matriculaMateria : matMats) {
-			Materia materia = materiasDatasource.getMateria(matriculaMateria.getMateria_id());
-			carga_cumprida+= materia.getCreditos();
-			cra += matriculaMateria.getNota();
+		if(matMats.size() != 0){
+			
+			for (MatriculaMateria matriculaMateria : matMats) {
+				Materia materia = materiasDatasource.getMateria(matriculaMateria.getMateria_id());
+				carga_cumprida+= materia.getCreditos();
+				cra += matriculaMateria.getNota() * carga_cumprida;
+				Log.v("RECALCULO: MATERIA", materia.getNome());
+				Log.v("RECALCULO: MATERIA-Nota", String.valueOf(matriculaMateria.getNota()));
+			}
 		}
 		cra = cra/carga_cumprida;
 		carga_cumprida_txt.setText(carga_cumprida.toString());

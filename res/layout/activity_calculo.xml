@@ -79,17 +79,6 @@
         android:text="@string/cra_label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/calculo_cra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/calculo_cra_label"
-        android:layout_alignBottom="@+id/calculo_cra_label"
-        android:layout_toLeftOf="@+id/calculo_carga_cumprida"
-        android:inputType="number"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
         android:id="@+id/calculo_add_materia"
         android:layout_width="wrap_content"
@@ -100,12 +89,23 @@
         android:text="@string/add_materia" />
 
     <Button
-        android:id="@+id/calculo_recalcular"
+        android:id="@+id/calculo_recalcularbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/calculo_add_materia"
         android:layout_alignRight="@+id/calculo_carga_curso_label"
         android:text="@string/recalcular" />
 
+    <TextView
+        android:id="@+id/calculo_cra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calculo_cra_label"
+        android:layout_alignBottom="@+id/calculo_cra_label"
+        android:layout_alignRight="@+id/calculo_add_materia"
+        android:layout_marginRight="14dp"
+        android:inputType="number"
+        android:text="1234"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

@@ -122,8 +122,8 @@ public class CalculoActivity extends ActionBarActivity {
 				Log.v("RECALCULO: MATERIA", materia.getNome());
 				Log.v("RECALCULO: MATERIA-Nota", String.valueOf(matriculaMateria.getNota()));
 			}
+			cra = cra/carga_cumprida;
 		}
-		cra = cra/carga_cumprida;
 		carga_cumprida_txt.setText(carga_cumprida.toString());
 		cra_txt.setText(cra.toString());
 	}

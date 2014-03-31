@@ -90,6 +90,15 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/calculo_add_materia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="55dp"
+        android:layout_toRightOf="@+id/calculo_carga_cumprida"
+        android:text="@string/add_materia" />
+
         />
 
 </RelativeLayout>

@@ -100,8 +100,8 @@ public class MatriculaActivity extends ActionBarActivity implements
 		String matricula = campoMatricula.getText().toString();
 
 		Matricula matriculaObj = matriculasDatasource.getOrCreateMatricula(matricula);
-		List<Matricula> values = matriculasDatasource.getAllMatriculas();
-		materiasDatasource.getAllMaterias();
+//		List<Matricula> values = matriculasDatasource.getAllMatriculas();
+//		materiasDatasource.getAllMaterias();
 		Log.w("MATRICULA SELECIONADA", matriculaObj.toString());
 		
 		Intent intent = new Intent(MatriculaActivity.this,

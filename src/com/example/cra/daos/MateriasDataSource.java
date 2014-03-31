@@ -111,6 +111,25 @@ public class MateriasDataSource {
 		Log.i(this.getClass().getName() + "getAll: ", materias.toString());
 		return materias;
 	}
+	
+	public List<Materia> getAllMateriasOrderByPeriodo() {
+		List<Materia> materias = new ArrayList<Materia>();
+		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_MATERIA,
+				allColumns, null, null, null, null, SQLiteDatabaseHelper.COLUMN_PERIODO);
+
+		Log.i(this.getClass().getName() + "getAll", "GET_ALL_BY_PERIODO");
+		
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Materia materia = cursorToMateria(cursor);
+			materias.add(materia);
+			cursor.moveToNext();
+		}
+		// make sure to close the cursor
+		cursor.close();
+		Log.i(this.getClass().getName() + "getAll: ", materias.toString());
+		return materias;
+	}
 
 	private Materia cursorToMateria(Cursor cursor) {
 		Materia materia = new Materia();
@@ -124,13 +143,14 @@ public class MateriasDataSource {
 	
 	public List<Materia> addDefaultMaterias(String materiasJson){
 		List<Materia> materias = getAllMaterias();
-		if(materias.size() != 0){
-			return materias;
-		}
 
 		Log.i(this.getClass().getName() + "addDefault: ", "DEFAULT");
 		List<Materia> materiasDefault = getDefaultMaterias(materiasJson);
 
+		if(materias.size() >= materiasDefault.size()){
+			return materias;
+		}
+		
 		List<Materia> materiasPersisted = new ArrayList<Materia>();
 		for (Materia materia : materiasDefault) {
 			materiasPersisted.add(persistMateria(materia));

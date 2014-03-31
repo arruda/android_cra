@@ -77,22 +77,6 @@ public class MatriculaActivity extends ActionBarActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_matricula,
-					container, false);
-			return rootView;
-		}
-	}
 
 	@Override
 	public void onClick(View v) {
@@ -118,12 +102,14 @@ public class MatriculaActivity extends ActionBarActivity implements
 	  @Override
 	  protected void onResume() {
 		  matriculasDatasource.open();
+		  materiasDatasource.open();
 	    super.onResume();
 	  }
 
 	  @Override
 	  protected void onPause() {
 		  matriculasDatasource.close();
+		  materiasDatasource.close();
 	    super.onPause();
 	  }
 

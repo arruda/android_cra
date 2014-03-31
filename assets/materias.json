@@ -5,6 +5,11 @@
 		"periodo": 1		
 	},
 	{
+		"nome": "TP2",
+		"creditos": 4,
+		"periodo": 2		
+	},
+	{
 		"nome": "TP1",
 		"creditos": 4,
 		"periodo": 1		

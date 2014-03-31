@@ -1,14 +1,19 @@
 package com.example.cra;
 
+import com.example.cra.models.Matricula;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.os.Build;
 
 public class CalculoActivity extends ActionBarActivity {
@@ -17,11 +22,14 @@ public class CalculoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculo);
+		
+		 final TextView txtview = (TextView) findViewById(R.id.testematricula);
+		 Matricula matriculaObj = (Matricula)getIntent().getSerializableExtra("MATRICULA");
 
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+		 Log.w("matricula", matriculaObj.toString());
+		 txtview.setText(matriculaObj.getMatricula());
+		  
+
 	}
 
 	@Override
@@ -44,21 +52,5 @@ public class CalculoActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_calculo,
-					container, false);
-			return rootView;
-		}
-	}
 
 }

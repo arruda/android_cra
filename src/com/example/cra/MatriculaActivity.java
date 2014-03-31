@@ -103,9 +103,15 @@ public class MatriculaActivity extends ActionBarActivity implements
 		List<Matricula> values = matriculasDatasource.getAllMatriculas();
 		materiasDatasource.getAllMaterias();
 		Log.w("MATRICULA SELECIONADA", matriculaObj.toString());
-//		Intent intent = new Intent(MatriculaActivity.this,
-//				CalculoActivity.class);
-//		startActivity(intent);
+		
+		Intent intent = new Intent(MatriculaActivity.this,
+				CalculoActivity.class);
+		
+		Bundle params = new Bundle(); 
+
+		params.putSerializable("MATRICULA", matriculaObj); 
+        intent.putExtras(params); 
+		startActivity(intent);
 
 	}
 

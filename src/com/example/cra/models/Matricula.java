@@ -1,7 +1,13 @@
 package com.example.cra.models;
+import java.io.Serializable; 
 
-public class Matricula {
+public class Matricula implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4352081547017316237L;
+	
 	private long id;
 	private String matricula;
 

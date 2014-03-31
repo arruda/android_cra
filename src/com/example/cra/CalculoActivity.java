@@ -18,16 +18,25 @@ import android.os.Build;
 
 public class CalculoActivity extends ActionBarActivity {
 
+	private TextView matricula_txt;
+	private TextView carga_curso_txt;
+	private TextView carga_cumprida_txt;
+	private TextView cra_txt;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculo);
-		
-		 final TextView txtview = (TextView) findViewById(R.id.testematricula);
-		 Matricula matriculaObj = (Matricula)getIntent().getSerializableExtra("MATRICULA");
 
-		 Log.w("matricula", matriculaObj.toString());
-		 txtview.setText(matriculaObj.getMatricula());
+		Matricula matriculaObj = (Matricula)getIntent().getSerializableExtra("MATRICULA");
+		 
+		matricula_txt = (TextView) findViewById(R.id.calculo_matricula);
+		carga_curso_txt = (TextView) findViewById(R.id.calculo_carga_curso);
+		carga_cumprida_txt = (TextView) findViewById(R.id.calculo_carga_cumprida);
+		cra_txt = (TextView) findViewById(R.id.calculo_carga_cumprida);
+		
+		Log.w("matricula", matriculaObj.toString());
+		matricula_txt.setText(matriculaObj.getMatricula());
 		  
 
 	}

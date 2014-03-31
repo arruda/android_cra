@@ -7,13 +7,89 @@
     tools:ignore="MergeRootFrame" >
 
     <TextView
-        android:id="@+id/testematricula"
+        android:id="@+id/calculo_matricula_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calculo_matricula"
+        android:layout_alignBottom="@+id/calculo_matricula"
+        android:layout_alignParentLeft="true"
+        android:text="@string/label_matricula"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/calculo_matricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@+id/calculo_matricula_label"
+        android:text="@string/label_matricula"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/calculo_carga_curso_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView" />
+        android:layout_below="@+id/calculo_matricula_label"
+        android:layout_marginTop="56dp"
+        android:text="@string/carga_curso_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/calculo_carga_curso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calculo_carga_curso_label"
+        android:layout_alignBottom="@+id/calculo_carga_curso_label"
+        android:layout_alignLeft="@+id/calculo_matricula"
+        android:inputType="number"
+        android:text="@string/carga_curso"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/calculo_carga_cumprida_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/calculo_carga_curso_label"
+        android:layout_marginTop="56dp"
+        android:text="@string/carga_cumprida_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/calculo_carga_cumprida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calculo_carga_cumprida_label"
+        android:layout_alignBottom="@+id/calculo_carga_cumprida_label"
+        android:layout_alignLeft="@+id/calculo_carga_curso"
+        android:text=""
+        android:inputType="number"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/calculo_cra_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/calculo_carga_cumprida"
+        android:layout_marginTop="43dp"
+        android:text="@string/cra_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/calculo_cra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calculo_cra_label"
+        android:layout_alignBottom="@+id/calculo_cra_label"
+        android:layout_toLeftOf="@+id/calculo_carga_cumprida"
+        android:inputType="number"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        />
 
 </RelativeLayout>

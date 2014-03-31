@@ -12,6 +12,10 @@
     <string name="materiaid_text">ID da Matéria</string>
     <string name="idvalue_text">valor do ID</string>
     <string name="add_string">Adicionar</string>
+    <string name="carga_curso_label">Carga do Curso:</string>
+    <string name="carga_curso">3240</string>
+    <string name="carga_cumprida_label">Carga Cumprida:</string>
+    <string name="cra_label">CRA:</string>
     
     
 
